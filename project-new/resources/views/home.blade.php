@@ -6,15 +6,18 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                    <div class="row">
-                        <div class="col-10">
-                            {{ __('Dashboard') }}
-                        </div>
+                <div class="row">
+                    <div class="col-9">
+                            {{ __('Dashboard') }}</div>
 
-                        <div class="col-2">
-                            <a href="product">Product</a>
-                        </div>
-                    </div>
+                   </div>
+                    <div class="col-1">
+                    <!-- <div class="card-header"> -->
+                       <a href="product">Product</a>
+
+                   </div>
+
+
                 </div>
 
                 <div class="card-body">
@@ -25,7 +28,6 @@
                     @endif
 
                     {{ __('You are logged in!') }}
-
                 </div>
             </div>
         </div>

@@ -22,7 +22,7 @@
                 </div>
 
                 <div class="card-body">
-                   somthing
+                
                 </div>
             </div>
         </div>
