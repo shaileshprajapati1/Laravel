@@ -13,6 +13,7 @@
                         {{ session('status') }}
                     </div>
                     @endif
+                    <a href="addproduct">ADD PRODUCT</a>
                     <table class="table table-borderd">
                         <thead>
                             <tr>
@@ -26,9 +27,9 @@
                             </tr>
                         </thead>
                         <tbody>
-                           
-                            @foreach($products as $product)  
-                           
+                                
+                            @foreach($products as $product)
+
                             <tr>
                                 <td>{{$product->id}}</td>
                                 <td>{{$product->title}}</td>
@@ -36,9 +37,9 @@
                                 <td>{{$product->procut_price}}</td>
                                 <td>{{$product->product_quntity}}</td>
                                 <td>{{$product->product_img}}</td>
-                                <td >
-                                    <a href="edit?productid={{$product->id}}">Edit</a>
-                                    <a href="delete?productid={{$product->id}}">Delete</a>
+                                <td>
+                                    <a href="editproduct/{{$product->id}}">Edit</a>
+                                    &nbsp; <a href="deleteproduct/{{$product->id}}">Delete</a>
                                 </td>
 
                             </tr>

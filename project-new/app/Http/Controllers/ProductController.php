@@ -13,7 +13,7 @@ class ProductController extends Controller
      */
     public function index(product $product)
     {
-        DB::connection()->enableQueryLog();
+        // DB::connection()->enableQueryLog();
         $products = DB::table('product')->get();
         // $queries = DB::getQueryLog();
         return view('viewallproduct', compact('products'));
@@ -32,9 +32,18 @@ class ProductController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, product $product)
     {
-        //
+        $product->title = $request->title;
+        $product->discription = $request->discription;
+        $product->procut_price = $request->procut_price;
+        $product->product_quntity = $request->product_quntity;
+        $product->product_img = "Defult.jpg";
+        $Insert = $product->save();
+        return redirect("product");
+        // dd($request->all());
+
+
     }
 
     /**
@@ -48,24 +57,35 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(product $product)
+    public function edit($productid, product $product)
     {
-        //
+        $Allproduct = $product::find($productid);
+        return view('editproduct', compact('Allproduct'));
+        // dd($Allproduct);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, product $product)
+    public function update($productid, Request $request, product $product)
     {
-        //
+        $Allproduct = $product::find($productid);
+        $Allproduct->title = $request->title;
+        $Allproduct->discription = $request->discription;
+        $Allproduct->procut_price = $request->procut_price;
+        $Allproduct->product_quntity = $request->product_quntity;
+        $Allproduct->product_img = "Defult.jpg";
+        $Allproduct->save();
+        return redirect("product");
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(product $product)
+    public function destroy($productid,product $product)
     {
-        //
+        $Allproduct = $product::find($productid);
+        $Allproduct->delete();
+        return redirect("product");
     }
 }
