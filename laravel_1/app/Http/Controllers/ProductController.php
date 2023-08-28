@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\product;
 use Illuminate\Http\Request;
 use DB;
+use PhpParser\Node\Stmt\Return_;
 
 class ProductController extends Controller
 {
@@ -29,9 +30,16 @@ class ProductController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, product $product)
     {
-        //
+        // dd('called');
+        $product->title = $request->title;
+        $product->discription = $request->description;
+        $product->quantity = $request->quantity;
+        $product->price = $request->price;
+
+        $product->save();
+        return redirect('product');
     }
 
     /**
@@ -45,24 +53,36 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(product $product)
+    public function edit($pid, product $product)
     {
-        //
+        $allproduct = $product::find($pid);
+        // dd($product);
+        return view('updateproduct', compact('allproduct'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, product $product)
+    public function update($pid, Request $request, product $product)
     {
-        //
+        $allproduct = $product::find($pid);
+        // dd($allproduct);
+        $allproduct->title = $request->title;
+        $allproduct->discription = $request->description;
+        $allproduct->quantity = $request->quantity;
+        $allproduct->price = $request->price;
+
+        $allproduct->save();
+        return redirect('product');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(product $product)
+    public function destroy($pid,product $product)
     {
-        //
+        $allproduct = $product::find($pid);
+        $allproduct->delete();
+        return redirect('product');
     }
 }
