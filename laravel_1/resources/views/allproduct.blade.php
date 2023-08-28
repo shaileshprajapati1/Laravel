@@ -3,35 +3,34 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="row">
-                    <div class="col-10">
-                        <div class="card-header">
-                            {{ __('Dashboard') }}
-                        </div>
+        <h1 class="text-center">All Product</h1>
+        <a href="addproduct">ADD PRODUCT</a>
+        <table class="table table-bordered table-primary">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Discription</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($Allproduct as $product)
+                <tr>
+                    <td>{{ $product->title}}</td> 
+                    <td>{{ $product->discription}}</td> 
+                    <td>{{ $product->quantity}}</td> 
+                    <td>{{ $product->price}}</td>
+                    <td>
+                        <a href="editproduct/{{ $product->id}}">Edit</a>
+                       &nbsp; &nbsp; <a href="deleteproduct/{{ $product->id}}">Delete</a>
+                    </td>
+                </tr>
+                @endforeach
 
-                    </div>
-                    <div class="col-2">
-                        <div class="card-header">
-                            <a href="product">Product</a>
-                        </div>
-
-                    </div>
-                </div>
-
-
-                <div class="card-body">
-                    @if (session('status'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('status') }}
-                    </div>
-                    @endif
-
-                   all product page 
-                </div>
-            </div>
-        </div>
+            </tbody>
+        </table>
     </div>
 </div>
 @endsection
