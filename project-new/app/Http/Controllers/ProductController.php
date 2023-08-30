@@ -60,7 +60,8 @@ class ProductController extends Controller
     public function edit($productid, product $product)
     {
         $Allproduct = $product::find($productid);
-        return view('editproduct', compact('Allproduct'));
+        // return view('editproduct', compact('Allproduct'));
+        return view('addproduct', compact('Allproduct'));
         // dd($Allproduct);
     }
 
