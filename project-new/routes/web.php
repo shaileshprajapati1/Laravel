@@ -17,14 +17,20 @@ Route::get('/', function () {
     return view('welcome');
 });
 // Route::view('/product', "viewallproduct");
-    
 
 
+//
 Auth::routes();
+
+Route::get('/admin', function () {
+  return view('admin');
+})->middleware('adminauth');
+
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/product', [App\Http\Controllers\ProductController::class, 'index']);
-Route::view('/addproduct',"addproduct");
+Route::view('/addproduct', "addproduct");
 Route::post('/saveproduct', [App\Http\Controllers\ProductController::class, 'store']);
 Route::any('/editproduct/{productid}', [App\Http\Controllers\ProductController::class, 'edit']);
 Route::any('/updateproduct/{productid}', [App\Http\Controllers\ProductController::class, 'update']);
