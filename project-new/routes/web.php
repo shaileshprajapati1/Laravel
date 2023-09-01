@@ -22,9 +22,7 @@ Route::get('/', function () {
 //
 Auth::routes();
 
-Route::get('/admin', function () {
-  return view('admin');
-})->middleware('adminauth');
+
 
 
 
@@ -35,3 +33,7 @@ Route::post('/saveproduct', [App\Http\Controllers\ProductController::class, 'sto
 Route::any('/editproduct/{productid}', [App\Http\Controllers\ProductController::class, 'edit']);
 Route::any('/updateproduct/{productid}', [App\Http\Controllers\ProductController::class, 'update']);
 Route::any('/deleteproduct/{productid}', [App\Http\Controllers\ProductController::class, 'destroy']);
+
+Route::view('/custome','custome');
+Route::view('/admindashboard','admin');
+Route::view('/collective','collective');

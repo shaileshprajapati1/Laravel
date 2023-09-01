@@ -23,11 +23,16 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $user =  \Auth::user();
+        if ($user['roll_id'] == 1) {
+            return redirect('admindashboard');
+        } else {
+
+            return view('home');
+        }
     }
     public function product()
     {
         return view('viewallproduct');
     }
 }
-   
