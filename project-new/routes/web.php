@@ -35,5 +35,6 @@ Route::any('/updateproduct/{productid}', [App\Http\Controllers\ProductController
 Route::any('/deleteproduct/{productid}', [App\Http\Controllers\ProductController::class, 'destroy']);
 
 Route::view('/custome','custome');
+Route::view('/addproductform','newaddproductform');
 Route::view('/admindashboard','admin');
 Route::view('/collective','collective');

@@ -43,6 +43,7 @@
 								</a>
 								<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 									<a class="dropdown-item" href="collective">Collective</a>
+									<a class="dropdown-item" href="addproductform">Add Product</a>
 									<!-- <a class="dropdown-item" href="services.html">Services</a> -->
 								</div>
 							</li>
