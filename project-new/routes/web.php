@@ -34,7 +34,13 @@ Route::any('/editproduct/{productid}', [App\Http\Controllers\ProductController::
 Route::any('/updateproduct/{productid}', [App\Http\Controllers\ProductController::class, 'update']);
 Route::any('/deleteproduct/{productid}', [App\Http\Controllers\ProductController::class, 'destroy']);
 
-Route::view('/custome','custome');
-Route::view('/addproductform','newaddproductform');
-Route::view('/admindashboard','admin');
-Route::view('/collective','collective');
+Route::view('/custome', 'custome');
+// Route::view('/addproductform', 'newaddproductform');
+Route::view('/collective', 'collective');
+
+Route::prefix('admin')->group(function () {
+    Route::view('/admindashboard', "admin.admindashboard");
+    Route::view('/htmlcollective', "admin.newaddproductform");
+
+
+});

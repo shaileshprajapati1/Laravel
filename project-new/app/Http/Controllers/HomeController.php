@@ -25,7 +25,7 @@ class HomeController extends Controller
     {
         $user =  \Auth::user();
         if ($user['roll_id'] == 1) {
-            return redirect('admindashboard');
+            return redirect('admin/admindashboard');
         } else {
 
             return view('home');
