@@ -41,6 +41,10 @@ Route::view('/collective', 'collective');
 Route::prefix('admin')->group(function () {
     Route::view('/admindashboard', "admin.admindashboard");
     Route::view('/htmlcollective', "admin.newaddproductform");
+    Route::view('/viewallusers', "admin.viewallusers");
+    Route::get('/viewallusers', [App\Http\Controllers\AllusersController::class, 'index']);
+    // Route::view('/edit/{userid}', "admin.editusers");
+    Route::any('/edit/{userid}', [App\Http\Controllers\AllusersController::class, 'edit']);
 
 
 });
