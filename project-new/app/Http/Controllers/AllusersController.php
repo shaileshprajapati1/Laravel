@@ -6,6 +6,7 @@ use App\Models\allusers;
 use Illuminate\Http\Request;
 use DB;
 use Validator;
+use Session;
 
 class AllusersController extends Controller
 {
@@ -52,7 +53,9 @@ class AllusersController extends Controller
                 'password'=>bcrypt($request->password),
                 
             ]);
-            return redirect("admin/allusers");
+           
+            return Redirect('admin/allusers');
+           
         }
     }
 
