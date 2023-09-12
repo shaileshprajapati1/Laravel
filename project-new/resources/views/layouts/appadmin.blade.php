@@ -48,7 +48,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <header class="header fixed-top clearfix">
             <!--logo start-->
             <div class="brand">
-                <a href="/admindashboard" class="logo">
+                <a href="admindashboard" class="logo">
                     VISITORS
                 </a>
                 <div class="sidebar-toggle-box">
@@ -276,7 +276,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <div class="leftside-navigation">
                     <ul class="sidebar-menu" id="nav-accordion">
                         <li>
-                            <a class="active" href="index.html">
+                            <a class="active" href="admindashboard">
                                 <i class="fa fa-dashboard"></i>
                                 <span>Dashboard</span>
                             </a>
@@ -299,7 +299,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <span>Users</span>
                             </a>
                             <ul class="sub">
-                                <li><a href="viewallusers">View User</a></li>
+                                <li><a href="{{ URL::to('admin/allusers') }}">View User</a></li>
                                 <!-- <li><a href="glyphicon.html">glyphicon</a></li>
                                 <li><a href="grids.html">Grids</a></li> -->
                             </ul>

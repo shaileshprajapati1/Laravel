@@ -6,9 +6,9 @@
     <section class="wrapper">
         <!-- //market-->
 
-        <!-- {{ $alluser }} -->
         <div class="col-md-12 stats-info stats-last widget-shadow">
             <div class="stats-last-agile">
+                  <a class="btn btn-success" href="{{ URL::to('admin/allusers/create') }}">Add User</a>
                 <table class="table stats-table ">
                     <thead>
                         <tr>
