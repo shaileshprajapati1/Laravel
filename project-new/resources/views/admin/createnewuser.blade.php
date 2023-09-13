@@ -5,7 +5,7 @@
     <section class="wrapper">
 
 
-        {{ Form::open(array('url' => 'admin/allusers')) }}
+        {{ Form::open(array('url' => 'admin/allusers','enctype' => 'multipart/form-data','method'=>'post')) }}
 
         <div class="form-group">
             {{ Form::label('name', 'Name') }}

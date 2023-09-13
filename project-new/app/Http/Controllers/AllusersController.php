@@ -31,31 +31,42 @@ class AllusersController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request )
     {
         // dd($request->all());
         $rules = array(
             'name'       => 'required',
             'email'      => 'required',
-            'password' => 'required'
+            'password' => 'required',
+            // 'profile_pic' => 'required|mimes:jpeg,jpg,png,gif'
         );
         $validator = Validator::make($request->all(), $rules);
+        // $imageName = time().'.'.$request->profile_pic->getClientOriginalExtension();
+        // $request->profile_pic->move(public_path('/uploads'), $imageName);
+
+        $image = $request->file('profile_pic');
+
+        $new_name = time() . '.' . $image->getClientOriginalExtension();
+        $image->move(public_path('/uploads'), $new_name);
+
+
+
         // dd($validator);
         if ($validator->fails()) {
-            return Redirect::to('admin/allusers/create')
+            return Redirect('admin/allusers/create')
                 ->withErrors($validator)
                 ->withInput($request->except('password'));
         } else {
             // store
             DB::table('users')->insert([
-                'name'=>$request->name,
-                'email'=>$request->email,
-                'password'=>bcrypt($request->password),
-                
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => bcrypt($request->password),
+                'profile_pic' => $new_name
+
             ]);
-           
+
             return Redirect('admin/allusers');
-           
         }
     }
 
