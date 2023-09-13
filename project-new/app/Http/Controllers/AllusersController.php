@@ -38,7 +38,7 @@ class AllusersController extends Controller
             'name'       => 'required',
             'email'      => 'required',
             'password' => 'required',
-            // 'profile_pic' => 'required|mimes:jpeg,jpg,png,gif'
+            // 'profile_pic' => 'required'
         );
         $validator = Validator::make($request->all(), $rules);
         // $imageName = time().'.'.$request->profile_pic->getClientOriginalExtension();

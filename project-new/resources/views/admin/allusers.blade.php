@@ -27,7 +27,8 @@
                             <th scope="row">{{ $i }}</th>
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
-                            <td>{{ $user->profile_pic }}</td>
+                            
+                            <td><image style="width:50px;" src="{{ ('/uploads/'.$user->profile_pic) }}"/></td>
                             <td>
                                 @if($user->roll_id == 2)
 
