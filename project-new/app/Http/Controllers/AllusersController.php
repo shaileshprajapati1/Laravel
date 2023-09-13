@@ -8,6 +8,7 @@ use DB;
 use Validator;
 use Session;
 
+
 class AllusersController extends Controller
 {
     /**
@@ -31,7 +32,7 @@ class AllusersController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request )
+    public function store(Request $request)
     {
         // dd($request->all());
         $rules = array(
@@ -73,12 +74,12 @@ class AllusersController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($id,allusers $allusers)
+    public function show($id, allusers $allusers)
     {
-    //    dd("call".$id);
-    //    $alldata = allusers::find($id);
-    //    dd($alldata);
-    //    return redirect("admin/allusers/create");
+        //    dd("call".$id);
+        //    $alldata = allusers::find($id);
+        //    dd($alldata);
+        //    return redirect("admin/allusers/create");
     }
 
     /**
@@ -87,20 +88,27 @@ class AllusersController extends Controller
     public function edit($id, allusers $allusers)
     {
         $alldata = allusers::find($id);
-    //    dd($alldata);
-       return view('admin.editusers',compact('alldata'));
+        //    dd($alldata);
+        return view('admin.editusers', compact('alldata'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update($id,Request $request, allusers $allusers)
+    public function update($id, Request $request, allusers $allusers)
     {
         $alldata = allusers::find($id);
         // dd($alldata);
         $alldata->name = $request->name;
         $alldata->email = $request->email;
-        $alldata->profile_pic = $request->profile_pic;
+        if ($request->hasFile('profile_pic')) {
+            $image = $request->file('profile_pic');
+            $new_name = time() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('/uploads'), $new_name);
+        } else {
+            $new_name = "defult.jpg";
+        }
+        $alldata->profile_pic = $new_name;
         $alldata->save();
         return redirect('admin/allusers');
     }
