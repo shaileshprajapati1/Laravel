@@ -73,27 +73,36 @@ class AllusersController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(allusers $allusers)
+    public function show($id,allusers $allusers)
     {
-        //
+    //    dd("call".$id);
+    //    $alldata = allusers::find($id);
+    //    dd($alldata);
+    //    return redirect("admin/allusers/create");
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($userid, allusers $allusers)
+    public function edit($id, allusers $allusers)
     {
-        $alluserfind = $allusers::find($userid);
-        // dd($alluserfind);
-        return view('admin.editusers', compact('alluserfind'));
+        $alldata = allusers::find($id);
+    //    dd($alldata);
+       return view('admin.editusers',compact('alldata'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, allusers $allusers)
+    public function update($id,Request $request, allusers $allusers)
     {
-        //
+        $alldata = allusers::find($id);
+        // dd($alldata);
+        $alldata->name = $request->name;
+        $alldata->email = $request->email;
+        $alldata->profile_pic = $request->profile_pic;
+        $alldata->save();
+        return redirect('admin/allusers');
     }
 
     /**

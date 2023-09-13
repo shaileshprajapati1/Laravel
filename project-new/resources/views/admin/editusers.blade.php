@@ -4,37 +4,46 @@
 <section id="main-content">
     <section class="wrapper">
 
+        {{ Form::open(array('url' => 'admin/allusers/'.$alldata->id,'enctype' => 'multipart/form-data','method' => 'PUT')) }}
 
-        <h2 class="text-center">UPDATE USER FORM</h2>
-        <form action="" method="post">
-            @csrf
-            <div class="row mb-2">
-                <div class="col-6 offset-3">
-                    <label for="name" class="form-label">Name</label>
-                    <input type="text" class="form-control" name="name" id="name">
-                </div>
-            </div>
-            <div class="row mb-2">
-                <div class="col-6 offset-3">
-                    <label for="email" class="form-label">Email</label>
-                    <input type="email" class="form-control" name="email" id="email">
-                </div>
-            </div>
+        <div class="form-group">
+            {{ Form::label('name', 'Name') }}
+            {{ Form::text('name', "$alldata->name" , array('class' => 'form-control')) }}
+        </div>
 
-            <div class="row mb-2">
-                <div class="col-6 offset-3">
-                    <label for="profile_pic" class="form-label">Profile_pic</label>
-                    <input type="file" class="form-control" name="profile_pic" id="profile_pic">
-                </div>
-            </div><br>
-            <div class="row mb-2">
-                <div class="col-6 offset-5">
-                    <input class="btn btn-success" type="submit" name="adduser" id="adduser" value="UPDATE USER">
-                    <!-- &nbsp; <input class="btn btn-danger" type="reset" value="CANCEL"> -->
-                </div>
-            </div>
+        <div class="form-group">
+            {{ Form::label('email', 'Email') }}
+            {{ Form::email('email', "$alldata->email" , array('class' => 'form-control')) }}
+        </div>
+        <!-- <div class="form-group">
+            {{ Form::label('password', 'password') }}
+            {{ Form::password('password', array('class' => 'form-control')) }}
+        </div> -->
+        <div class="form-group">
+            {{ Form::label('profile_pic', 'profile_pic') }}
+            {{ Form::file('profile_pic', array('class' => 'form-control')) }}
+            {{ Form::text('profile_pic', "$alldata->profile_pic" , array('class' => 'form-control')) }}
+        </div>
 
-        </form>
+
+        {{ Form::submit('Update User', array('class' => 'btn btn-primary')) }}
+
+        {{ Form::close() }}
+
+        @if ($errors->all())
+        <div class="alert alert-danger mt-2">
+          <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+          </ul>
+        </div>
+        @endif
+
+
+
+
+
 
     </section>
 

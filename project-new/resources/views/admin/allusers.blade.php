@@ -32,7 +32,7 @@
                             <td>
                                 @if($user->roll_id == 2)
 
-                                <a class="label label-success" href="edit/{{ $user->id }}">Edit</a>   
+                                <a class="label label-success" href="{{ URL::to('admin/allusers/'. $user->id).'/edit' }}">Edit</a>   
                                 <a class="label label-danger" href="delete/{{ $user->id }}">Delete</a>   
                                 @endif
                                
