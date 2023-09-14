@@ -244,13 +244,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <li class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <!-- <img alt="" src=" {{ ('/uploads/'. Auth::user()->profile_pic) }}" width="30px"> -->
-                            <img alt="" src=" {{ url('admin/images/shailesh.jpg') }}" width="30px">
+                            <image style="width:30px;" src="{{ ('/uploads/'.Auth::user()->profile_pic) }}"/>
+                            <!-- <img alt="" src=" {{ url('admin/images/shailesh.jpg') }}" width="30px"> -->
                             <span class="username">{{ Auth::user()->name }}</span>
                             <b class="caret"></b>
                         </a>
                      
                         <ul class="dropdown-menu extended logout">
-                            <li><a href="profile"><i class=" fa fa-suitcase"></i>Profile</a></li>
+                            <li><a href="/admin/allusers/{{ Auth::user()->id }}./edit"><i class=" fa fa-suitcase"></i>Profile</a></li>
                             <li><a href="#"><i class="fa fa-cog"></i> Settings</a></li>
                             <li>
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();

@@ -103,12 +103,14 @@ class AllusersController extends Controller
         // dd($alldata);
         $alldata->name = $request->name;
         $alldata->email = $request->email;
-        if ($request->hasFile('profile_pic')) {
+        // dd($request->profile_pic);
+        if ($request->profile_pic == null) {
+            $new_name = $request->old_prof_pic;
+        } else {
             $image = $request->file('profile_pic');
             $new_name = time() . '.' . $image->getClientOriginalExtension();
             $image->move(public_path('/uploads'), $new_name);
-        } else {
-            $new_name = "defult.jpg";
+            
         }
         $alldata->profile_pic = $new_name;
         $alldata->save();
@@ -117,7 +119,7 @@ class AllusersController extends Controller
 
     /**
      * Remove the specified resource from storage.
-     */
+       */
     public function destroy($id, allusers $allusers)
     {
         $alldata = allusers::find($id);

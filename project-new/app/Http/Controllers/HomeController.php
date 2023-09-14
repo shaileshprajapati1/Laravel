@@ -35,9 +35,5 @@ class HomeController extends Controller
     {
         return view('viewallproduct');
     }
-    public function update($id, Request $request)
-    {
-       
-        
-    }
+   
 }

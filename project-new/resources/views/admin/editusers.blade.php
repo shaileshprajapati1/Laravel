@@ -24,7 +24,7 @@
             <image style="width:50px;" src="{{ ('/uploads/'.$alldata->profile_pic) }}"/>
             {{ Form::file('profile_pic', array('class' => 'form-control')) }}
             <!-- {{ Form::hidden('profile_pic', "$alldata->profile_pic" , array('class' => 'form-control')) }} -->
-            <!-- {{ Form::text('old_prof_pic', "$alldata->profile_pic" , array('class' => 'form-control')) }} -->
+            {{ Form::hidden('old_prof_pic', "$alldata->profile_pic" , array('class' => 'form-control')) }}
         </div>
 
 
