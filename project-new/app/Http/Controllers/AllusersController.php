@@ -20,7 +20,7 @@ class AllusersController extends Controller
         // dd($alluser);
         return view('admin/allusers', compact('alluser'));
     }
-
+  
     /**
      * Show the form for creating a new resource.
      */
@@ -70,6 +70,8 @@ class AllusersController extends Controller
             return Redirect('admin/allusers');
         }
     }
+
+    
 
     /**
      * Display the specified resource.

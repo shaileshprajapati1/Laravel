@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -41,9 +42,14 @@ Route::view('/collective', 'collective');
 Route::prefix('admin')->group(function () {
     Route::view('/admindashboard', "admin.admindashboard");
     Route::view('/htmlcollective', "admin.newaddproductform");
+    Route::view('/profile', "admin.profile");
+    Route::any('/updateuser/{$id}',[App\Http\Controllers\HomeController::class, 'update']);
+    
     // Route::view('/viewallusers', "admin.viewallusers");
     // Route::get('/viewallusers', [App\Http\Controllers\AllusersController::class, 'index']);
     // Route::view('/edit/{userid}', "admin.editusers");
     // Route::any('/edit/{userid}', [App\Http\Controllers\AllusersController::class, 'edit']);
     Route::resource('allusers', "App\Http\Controllers\AllusersController");
+    
 });
+

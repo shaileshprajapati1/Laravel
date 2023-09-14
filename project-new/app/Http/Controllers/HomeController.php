@@ -25,7 +25,7 @@ class HomeController extends Controller
     {
         $user =  \Auth::user();
         if ($user['roll_id'] == 1) {
-            return redirect('admin/admindashboard');
+            return view('admin/admindashboard',);
         } else {
 
             return view('home');
@@ -35,4 +35,9 @@ class HomeController extends Controller
     {
         return view('viewallproduct');
     }
+    public function update($id,Request $request)
+    {
+       dd($request);
+    }
+   
 }
