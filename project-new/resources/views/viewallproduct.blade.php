@@ -24,7 +24,7 @@
                                 <th>product_quntity</th>
                                 <th>product_img</th>
                                 <th>Action</th>
-                                <th>Status</th>
+                                <!-- <th>Status</th> -->
                             </tr>
                         </thead>
                         <tbody>
@@ -42,10 +42,10 @@
                                     <a href="editproduct/{{$product->id}}">Edit</a>
                                     &nbsp; <a href="deleteproduct/{{$product->id}}">Delete</a>
                                 </td>
-                                <td>
+                                <!-- <td>
                                     <a href="active/{{$product->status}}">active</a>
                                     &nbsp; <a href="deactive/{{$product->status}}">deactive</a>
-                                </td>
+                                </td> -->
 
                             </tr>
                             @endforeach
