@@ -20,7 +20,7 @@ class AllusersController extends Controller
         // dd($alluser);
         return view('admin/allusers', compact('alluser'));
     }
-  
+
     /**
      * Show the form for creating a new resource.
      */
@@ -71,7 +71,7 @@ class AllusersController extends Controller
         }
     }
 
-    
+
 
     /**
      * Display the specified resource.
@@ -118,8 +118,13 @@ class AllusersController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(allusers $allusers)
+    public function destroy($id, allusers $allusers)
     {
-        //
+        $alldata = allusers::find($id);
+        // dd($alldata);
+        $alldata->delete();
+       
+        return redirect('admin/allusers');
+
     }
 }

@@ -8,7 +8,7 @@
 
         <div class="col-md-12 stats-info stats-last widget-shadow">
             <div class="stats-last-agile">
-                  <a class="btn btn-success" href="{{ URL::to('admin/allusers/create') }}">Add User</a>
+                <a class="btn btn-success" href="{{ URL::to('admin/allusers/create') }}">Add User</a>
                 <table class="table stats-table ">
                     <thead>
                         <tr>
@@ -27,17 +27,26 @@
                             <th scope="row">{{ $i }}</th>
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
-                            
-                            <td><image style="width:50px;" src="{{ ('/uploads/'.$user->profile_pic) }}"/></td>
+
+                            <td>
+                                <image style="width:50px;" src="{{ ('/uploads/'.$user->profile_pic) }}" />
+                            </td>
                             <td>
                                 @if($user->roll_id == 2)
 
-                                <a class="label label-success" href="{{ URL::to('admin/allusers/'. $user->id).'/edit' }}">Edit</a>   
-                                <a class="label label-danger" href="delete/{{ $user->id }}">Delete</a>   
+                                <a class="label label-success" href="{{ URL::to('admin/allusers/'. $user->id).'/edit' }}">Edit</a>
+                                <form action="{{ URL::to('admin/allusers/' . $user->id) }}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="label label-danger">Delete</button>
+
+                                </form>
+
+                                <!-- <a class="label label-danger" href="{{ URL::to('admin/allusers/' . $user->id) }}">Delete</a> -->
                                 @endif
-                               
-                           
-                            
+
+
+
                             </td>
                         </tr>
                         @endforeach
