@@ -49,6 +49,8 @@ Route::prefix('admin')->group(function () {
     // Route::view('/edit/{userid}', "admin.editusers");
     // Route::any('/edit/{userid}', [App\Http\Controllers\AllusersController::class, 'edit']);
     Route::resource('allusers', "App\Http\Controllers\AllusersController");
+
+    Route::view('allprod',"admin.apiallprod");
     
 });
 

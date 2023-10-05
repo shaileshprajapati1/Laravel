@@ -17,3 +17,10 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::prefix("admin")->group(function(){
+Route::get('/allproduct',[App\Http\Controllers\ApiController::class,'index']);
+});
+
+
+

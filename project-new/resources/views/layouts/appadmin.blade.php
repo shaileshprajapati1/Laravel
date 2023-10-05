@@ -307,6 +307,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <li><a href="grids.html">Grids</a></li> -->
                             </ul>
                         </li>
+                        <li class="sub-menu">
+                            <a href="/allproduct">
+                                <i class="fa fa-book"></i>
+                                <span>API</span>
+                            </a>
+                            
+                        </li>
                         <!-- <li>
                             <a href="fontawesome.html">
                                 <i class="fa fa-bullhorn"></i>
@@ -537,6 +544,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         });
     </script>
     <!-- //calendar -->
+    @stack('api')
 </body>
 
 </html>
