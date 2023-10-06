@@ -23,6 +23,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     </script>
     <!-- bootstrap-css -->
     <link rel="stylesheet" href="{{ url('admin/css/bootstrap.min.css') }}">
+    
     <!-- //bootstrap-css -->
     <!-- Custom CSS -->
     <link href="{{ url('admin/css/style.css') }}" rel='stylesheet' type='text/css' />
@@ -40,6 +41,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <script src="{{ url('admin/js/jquery2.0.3.min.js') }}"></script>
     <script src="{{ url('admin/js/raphael-min.js') }}"></script>
     <script src="{{ url('admin/js/morris.js') }}"></script>
+    
 </head>
 
 <body>
@@ -308,7 +310,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             </ul>
                         </li>
                         <li class="sub-menu">
-                            <a href="/allproduct">
+                            <a href="/admin/allprod">
                                 <i class="fa fa-book"></i>
                                 <span>API</span>
                             </a>
