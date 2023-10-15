@@ -6,6 +6,12 @@ use App\Models\Student;
 use Illuminate\Http\Request;
 use DataTables;
 use Illuminate\Support\Facades\DB;
+use Yajra\DataTables\Html\Button;
+use Yajra\DataTables\Html\Column;
+use Yajra\DataTables\Html\Editor\Editor;
+use Yajra\DataTables\Html\Editor\Fields;
+use Yajra\DataTables\Services\DataTable;
+
 
 class StudentController extends Controller
 {
@@ -16,6 +22,8 @@ class StudentController extends Controller
     {
         return view('studenttable');
     }
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -28,19 +36,20 @@ class StudentController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request,Student $student)
+    public function store(Request $request, Student $student)
     {
-     
-   
+
+
         if ($request->ajax()) {
             $data = DB::table('students')->get();
-          
+
             return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function ($row) {
                     $actionBtn = '<a href="javascript:void(0)" class="edit btn btn-success btn-sm">Edit</a> <a href="javascript:void(0)" class="delete btn btn-danger btn-sm">Delete</a>';
                     return $actionBtn;
                 })
+
                 ->rawColumns(['action'])
                 ->make(true);
         }
@@ -51,7 +60,6 @@ class StudentController extends Controller
      */
     public function show(Student $student)
     {
-        //
     }
 
     /**

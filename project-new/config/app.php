@@ -172,6 +172,7 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         App\Providers\MacroServiceProvider::class,
         Yajra\DataTables\DataTablesServiceProvider::class,
+        Yajra\DataTables\ButtonsServiceProvider::class,
     ])->toArray(),
 
     /*

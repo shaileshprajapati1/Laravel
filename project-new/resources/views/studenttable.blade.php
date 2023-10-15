@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" />
     <link href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.0.3/css/buttons.dataTables.min.css"> 
 </head>
 
 <body>
@@ -74,11 +75,18 @@
                     orderable: true,
                     searchable: true
                 },
+
             ]
         });
 
     });
-   
+
+
+</script>
+</script>
+
+
+
 </script>
 
 </html>
