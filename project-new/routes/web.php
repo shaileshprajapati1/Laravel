@@ -23,6 +23,9 @@ Route::get('/', function () {
 //
 Auth::routes();
 
+// studentdatatable
+Route::get('/student',[App\Http\Controllers\StudentController::class,'index']);
+Route::get('/students/list',[App\Http\Controllers\StudentController::class,'store']);
 
 
 

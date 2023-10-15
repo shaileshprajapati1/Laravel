@@ -7,13 +7,18 @@
             <div class="card">
                 <div class="card-header">
                 <div class="row">
-                    <div class="col-9">
+                    <div class="col-7">
                             {{ __('Dashboard') }}</div>
 
                    </div>
-                    <div class="col-1">
+                    <div class="col-2">
                     <!-- <div class="card-header"> -->
                        <a href="product">Product</a>
+
+                   </div>
+                    <div class="col-2">
+                    <!-- <div class="card-header"> -->
+                       <a href="student">student</a>
 
                    </div>
 

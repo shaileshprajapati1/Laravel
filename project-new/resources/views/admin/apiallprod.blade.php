@@ -112,6 +112,7 @@
                 <td>${element.discription}</td>
                 <td>${element.procut_price}</td>
                 <td>${element.product_quntity}</td>
+                
                 <td>${element.product_img}</td>
                 <td>${element.id}</td>
                 
