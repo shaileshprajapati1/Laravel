@@ -57,6 +57,7 @@
                                 <div class="col">
                                     <label for="discription" class="form-lable">Discription</label>
                                     <input type="text" name="discription" id="discription" class="form-control">
+
                                 </div>
                             </div>
                             <div class="row mt-2">
@@ -98,6 +99,31 @@
 @endsection
 @push('api')
 <script>
+    async function editproduct(id) {
+        // console.log("call");
+        let viewprod = await fetch(`http://localhost:8000/api/admin/editproduct/${id}`)
+        let viewprodRes = await viewprod.json();
+        console.log(viewprodRes);
+        document.getElementById("title").value = viewprodRes.title;
+        document.getElementById("discription").value = viewprodRes.discription;
+        document.getElementById("procut_price").value = viewprodRes.procut_price;
+        document.getElementById("product_quntity").value = viewprodRes.product_quntity;
+        document.getElementById("product_quntity").value = viewprodRes.product_quntity;
+        console.log(document.getElementById("product_img").value);
+
+        let imgInp = document.getElementById("product_img").file =viewprodRes.product_img;
+        // console.log(imgInp);
+        let blah = document.getElementById("product_image")
+        console.log(blah);
+
+        imgInp.onchange = evt => {
+            const [file] = imgInp
+            if (file) {
+                blah.src = URL.createObjectURL(file)
+            }
+        }
+    }
+
     async function fetchdata(e) {
         let allprod = await fetch(`http://localhost:8000/api/admin/allproduct`)
         let allprodRes = await allprod.json();
@@ -113,11 +139,20 @@
                 <td>${element.procut_price}</td>
                 <td>${element.product_quntity}</td>
                 
-                <td>${element.product_img}</td>
-                <td>${element.id}</td>
+                <td>
+                <img src="/uploads/${element.product_img}" width="50px" alt=""></td>
+                <td>
+                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal" onclick="editproduct(${element.id})">
+                Edit
+                </button>
+               
+                
+                <button onclick="deleteproduct(${element.id})" class="btn btn-danger">Delete</button>
+                </td>
                 
                 </tr>`
             srno++
+
         });
 
         document.getElementById("showprod").innerHTML = product
@@ -142,6 +177,7 @@
             body: JSON.stringify(result)
         }).then((res) => res.json()).then((Response) => {
             fetchdata();
+
         })
     })
 
@@ -165,7 +201,7 @@
             headers: {
                 // 'Accept': 'application/json',
                 // 'Content-Type': 'application/json'
-                _token:"{{ csrf_token() }}"
+                _token: "{{ csrf_token() }}"
             },
             method: "POST",
             body: form_data

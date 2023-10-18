@@ -14,8 +14,8 @@ class ApiController extends Controller
      */
     public function index()
     {
-
-        return  product::all();
+      $res = Product::all();
+        return  $res;
     }
 
     /**
@@ -56,7 +56,8 @@ class ApiController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $res = Product::find($id);
+        return $res;
     }
 
     /**
