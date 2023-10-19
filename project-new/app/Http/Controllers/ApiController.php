@@ -14,7 +14,7 @@ class ApiController extends Controller
      */
     public function index()
     {
-      $res = Product::all();
+        $res = Product::all();
         return  $res;
     }
 
@@ -40,13 +40,13 @@ class ApiController extends Controller
         $product->product_img = $request->image;
 
         $product->save();
-      return true;
+        return true;
     }
     public function uploadimage(Request $request, Product $product)
     {
         $uploadimage = time() . '.' . $request->product_img->getClientOriginalExtension();
         $request->product_img->move(public_path('/uploads'), $uploadimage);
-       
+
         return json_encode($uploadimage);
     }
 
@@ -71,9 +71,17 @@ class ApiController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, string $id, Product $product)
     {
-        //
+        $res = Product::find($id);
+
+        $res->title = $request->title;
+        $res->discription = $request->discription;
+        $res->procut_price = $request->procut_price;
+        $res->product_quntity = $request->product_quntity;
+        $res->product_img = $request->product_img;
+        $res->save();
+        return $res;
     }
 
     /**

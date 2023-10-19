@@ -23,6 +23,8 @@ Route::get('/allproduct',[App\Http\Controllers\ApiController::class,'index']);
 Route::post('/saveproduct',[App\Http\Controllers\ApiController::class,'store']);
 Route::post('/uploadimage',[App\Http\Controllers\ApiController::class,'uploadimage']);
 Route::get('/editproduct/{id}',[App\Http\Controllers\ApiController::class,'show']);
+Route::get('/updateproduct/{id}',[App\Http\Controllers\ApiController::class,'update']);
+Route::get('/uploadimage/{id}',[App\Http\Controllers\ApiController::class,'updateimage']);
 
 });
 

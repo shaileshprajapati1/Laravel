@@ -85,7 +85,7 @@
                         </div>
                         <div class="modal-footer">
                             <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
-                            <button type="submit" id="saveproduct" class="btn btn-primary">ADD PRODUCT</button>
+                            <input type="submit" id="saveproduct" class="btn btn-primary" value="saveproduct">
                         </div>
                     </form>
                 </div>
@@ -99,29 +99,47 @@
 @endsection
 @push('api')
 <script>
+    async function updateproduct(id) {
+        $("#updateproductform").on("submit", function(event) {
+            event.preventDefault();
+            // console.log(id);
+            var result = {};
+            $.each($('#updateproductform').serializeArray(), function() {
+                result[this.name] = this.value;
+            });
+            // console.log(result);
+            fetch(`http://localhost:8000/api/admin/updateproduct/${id}`, {
+
+            }).then((res) => res.json()).then((responce) => {
+                console.log(responce);
+            })
+
+
+        })
+
+    }
     async function editproduct(id) {
         // console.log("call");
         let viewprod = await fetch(`http://localhost:8000/api/admin/editproduct/${id}`)
         let viewprodRes = await viewprod.json();
-        console.log(viewprodRes);
+        // console.log(viewprodRes);
         document.getElementById("title").value = viewprodRes.title;
         document.getElementById("discription").value = viewprodRes.discription;
         document.getElementById("procut_price").value = viewprodRes.procut_price;
         document.getElementById("product_quntity").value = viewprodRes.product_quntity;
         document.getElementById("product_quntity").value = viewprodRes.product_quntity;
-        console.log(document.getElementById("product_img").value);
+        // console.log(document.getElementById("product_img").value);
 
-        let imgInp = document.getElementById("product_img").file =viewprodRes.product_img;
+        let imgInp = document.getElementById("product_img").file = viewprodRes.product_img;
         // console.log(imgInp);
         let blah = document.getElementById("product_image")
-        console.log(blah);
+        blah.src = "/uploads/" + imgInp
 
-        imgInp.onchange = evt => {
-            const [file] = imgInp
-            if (file) {
-                blah.src = URL.createObjectURL(file)
-            }
-        }
+        document.getElementById('saveproduct').setAttribute('onclick', `updateproduct(${viewprodRes.id})`);
+        document.getElementById('saveproduct').value = "Updateproduct";
+        document.getElementById('product_form').id = "updateproductform";
+
+
     }
 
     async function fetchdata(e) {
