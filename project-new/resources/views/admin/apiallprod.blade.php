@@ -109,7 +109,12 @@
             });
             // console.log(result);
             fetch(`http://localhost:8000/api/admin/updateproduct/${id}`, {
-
+                headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            method: "PUT",
+            body: JSON.stringify(result)
             }).then((res) => res.json()).then((responce) => {
                 console.log(responce);
             })

@@ -79,7 +79,7 @@ class ApiController extends Controller
         $res->discription = $request->discription;
         $res->procut_price = $request->procut_price;
         $res->product_quntity = $request->product_quntity;
-        $res->product_img = $request->product_img;
+        $res->product_img = "defilt.jpg";
         $res->save();
         return $res;
     }
