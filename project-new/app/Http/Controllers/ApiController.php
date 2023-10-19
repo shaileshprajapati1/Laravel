@@ -60,13 +60,6 @@ class ApiController extends Controller
         return $res;
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
@@ -79,9 +72,9 @@ class ApiController extends Controller
         $res->discription = $request->discription;
         $res->procut_price = $request->procut_price;
         $res->product_quntity = $request->product_quntity;
-        $res->product_img = "defilt.jpg";
+        $res->product_img = $request->image;
         $res->save();
-        return $res;
+        return true;
     }
 
     /**
@@ -89,6 +82,9 @@ class ApiController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        // dd("call");
+        $product = Product::find($id);
+        $product->delete();
+        return true;
     }
 }

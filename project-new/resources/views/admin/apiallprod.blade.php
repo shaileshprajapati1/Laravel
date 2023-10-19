@@ -99,6 +99,22 @@
 @endsection
 @push('api')
 <script>
+    function deleteproduct(id) {
+        // console.log("call");
+        fetch(`http://localhost:8000/api/admin/deleteproduct/${id}`, {
+            headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                method: "delete",
+
+        }).then((res) => res.json()).then((result) => {
+            confirm('Are you sure to delete');
+            // console.log(result);
+            fetchdata();
+        })
+    }
+
     async function updateproduct(id) {
         $("#updateproductform").on("submit", function(event) {
             event.preventDefault();
@@ -110,13 +126,14 @@
             // console.log(result);
             fetch(`http://localhost:8000/api/admin/updateproduct/${id}`, {
                 headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            method: "PUT",
-            body: JSON.stringify(result)
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                method: "POST",
+                body: JSON.stringify(result)
             }).then((res) => res.json()).then((responce) => {
-                console.log(responce);
+                // console.log(responce);
+                fetchdata();
             })
 
 
